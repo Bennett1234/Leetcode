@@ -1,3 +1,4 @@
+# by recursion
 def climbstairs(n):
     if n == 1:
         return 1
