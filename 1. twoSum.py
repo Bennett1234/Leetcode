@@ -7,3 +7,10 @@ def twoSum(numbers,target):
             if a + b == target:
                 return [i,j+i+1]
     return [-1,-1]
+
+def TwoSum (l, target):
+    for i in range(0,len(l)):
+        for j in range(i+1,len(l)):
+            if l[i] + l[j] == target:
+                return (i,j)
+    return [-1,-1]
