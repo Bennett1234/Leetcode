@@ -6,3 +6,14 @@ def TwoSum (l, target):
             if l[i] + l[j] == target:
                 return (i,j)
     return [-1,-1]
+
+
+#O(n)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d = {}
+        for i in range(len(nums)):
+            l = target-nums[i]
+            if (l in d):
+                return [i,d[l]]
+            d[nums[i]] = i
