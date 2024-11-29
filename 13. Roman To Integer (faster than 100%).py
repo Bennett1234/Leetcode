@@ -1,15 +1,21 @@
-def romanToNum(x):
-    l = len(x)
-    i = 0
-    dic_ = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
-    s = 0
-    while i < l:
-        if i < l-1 and ((x[i] == 'I' and x[i+1] in ('V','X')) or \
-        (x[i] == 'X' and x[i+1] in ('L','C')) or \
-        (x[i] == 'C' and x[i+1] in('D','M'))):
-            s += dic_[x[i+1]]-dic_[x[i]]
-            i += 2
-        else:
-            s += dic_[x[i]]
-            i += 1
-    return s
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        sum_ = 0
+        d = {'I':1
+        ,'X':10
+        ,'C':100
+        ,'V':5
+        ,'L':50
+        ,'M':1000
+        ,'D':500}
+        prev = None
+        for i in range(len(s)-1,-1,-1):
+            if (prev in ['V','X'] and s[i] == 'I')\
+            or(prev in ['L','C'] and s[i] == 'X')\
+            or(prev in ['D','M'] and s[i] == 'C'):
+                sum_ = sum_-d[s[i]]
+            else:
+                sum_ = sum_+d[s[i]]
+            prev = s[i]
+
+        return sum_
