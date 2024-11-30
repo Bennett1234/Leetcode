@@ -1,10 +1,13 @@
-#by using order string
-def longestCommonPrefix(strs):
-    if not strs: return ''
-    s1 = min(strs)
-    s2 = max(strs)
-    for i, c in enumerate(s1):
-        if c != s2[i]:
-            return s1[:i]
-    return s1
+#vertical search
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs) == 0:
+            return ""
+        base = strs[0]
+        for i in range(len(base)):
+            for word in strs[1:]:
+                if (i == len(word)) or\
+                (word[i]!= base[i]):
+                    return base[:i]
+        return base
                 
