@@ -1,13 +1,19 @@
-# using stack
-def right(s):
-    stack = []
-    dict = {"]":"[", "}":"{", ")":"("}
-    for char in s:
-        if char in dict.values():
-               stack.append(char)
-        elif char in dict.keys():
-            if stack == [] or dict[char] != stack.pop():
+class Solution:
+    def isValid(self, s: str) -> bool:
+        bucket = []
+        map_ = {'(':')',
+        '[':']',
+        '{':'}'}
+        for i in s:
+            if i in ['(','[','{']:
+                bucket.append(i)
+            elif len(bucket) > 0:
+                last = bucket.pop()
+                if map_[last] != i:
+                    return False
+            else:
                 return False
-        else:
+        if len(bucket) >0:
             return False
-    return stack == []
+        else:
+            return True
